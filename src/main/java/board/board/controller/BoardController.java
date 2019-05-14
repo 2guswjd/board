@@ -10,7 +10,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import board.board.dto.BoardDto;
 import board.board.service.BoardService;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 public class BoardController {
 	
@@ -19,6 +21,8 @@ public class BoardController {
 	
 	@RequestMapping("/board/openBoardList.do")
 	public ModelAndView openBoardList() throws Exception{
+		log.debug("openBoardList");
+		
 		ModelAndView mv = new ModelAndView("/board/boardList");
 		
 		List<BoardDto> list = boardService.selectBoardList();
@@ -40,6 +44,8 @@ public class BoardController {
 	
 	@RequestMapping("/board/openBoardDetail.do")
 	public ModelAndView openBoardDetail(@RequestParam int boardIdx) throws Exception{
+		log.debug("boardDetail");
+		
 		ModelAndView mv = new ModelAndView("/board/boardDetail");
 		
 		BoardDto board = boardService.selectBoardDetail(boardIdx);
