@@ -3,14 +3,22 @@ package board.board.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import board.board.dto.BoardDto;
+import board.board.dto.BoardFileDto;
 
 @Mapper
 public interface BoardMapper {
 	List<BoardDto> selectBoardList() throws Exception;
 	
+	List<BoardFileDto> selectBoardFileList(int boardIdx) throws Exception;
+	
+	BoardFileDto selectBoardFileInformation(@Param("idx") int idx, @Param("boardIdx") int boardIdx);
+	
 	void insertBoard(BoardDto board) throws Exception;
+	
+	void insertBoardFileList(List<BoardFileDto> list) throws Exception;
 
 	BoardDto selectBoardDetail(int boardIdx) throws Exception;
 
